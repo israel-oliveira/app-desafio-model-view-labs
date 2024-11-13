@@ -1,7 +1,7 @@
 import 'package:asyncstate/asyncstate.dart';
+import 'package:desafio_modelviewlabs/src/core/bindings/app_binding.dart';
 import 'package:desafio_modelviewlabs/src/core/helpers/messages.dart';
 import 'package:desafio_modelviewlabs/src/pages/home/home_controller.dart';
-import 'package:desafio_modelviewlabs/src/repositories/random/http_random_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:signals_flutter/signals_flutter.dart';
 
@@ -13,8 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with MessageViewMixix {
-  HomeController controller =
-      HomeController(randomRepository: HttpRandomRepository());
+  HomeController controller = AppBinding().getIt<HomeController>();
 
   @override
   void initState() {
