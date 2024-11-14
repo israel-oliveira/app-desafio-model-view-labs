@@ -39,7 +39,6 @@ Conforme sugerido pelo enunciado, o aplicativo conta com duas telas, sendo que a
 
 <div style="display: flex; align-items: center; ">
     <img src="./git_assets/home_page_app.png" width="200"/> 
-    <div style="margin-left: 25px;" ></div>  
     <img  src="./git_assets/success_page_app.png" width="200"/>   
 </div>
 <br>
@@ -83,13 +82,12 @@ Para facilitar o debug e desenvolvimento do APP recomendo adicionar estes argume
             "name": "launch_name_dev",
             "request": "launch",
             "type": "dart",
-            // Adicionar argumentos
             "args": [
                 "--dart-define-from-file",
                 "./config/env.json"
             ]
         },
-        ...
+       
     ]
 }
 ```
