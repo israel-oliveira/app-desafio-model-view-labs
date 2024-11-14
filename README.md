@@ -10,32 +10,96 @@ Essa senha será validada, e, se estiver dentro dos padrões de segurança da em
 
 Disponibilizando o APK em relesa para testes
 
+<h6> Download APK - Link direto Google Drive </h6>
+
 <div style="display: flex; align-items: center; ">
     <a href="https://drive.google.com/uc?export=download&id=1-Q-6gzGVUvzzK0VCcyQUr8OejUw_4NUp" target="_blank">
         <img src="./git_assets/download_button.png" width="200" alt="Download Button" />
     </a>
-    <span style="margin-left: 15px;">| Download APK - Link direto Google Drive</span>
+    
 </div>
-
+<br>
 
 ## Aplicativo
 
-Conforme sugerido pelo enunciado o aplicativo conta com duas telas
+Conforme sugerido pelo enunciado, o aplicativo conta com duas telas, sendo que a primeira contém as funcionalidades e realiza as consultas à API.
+
+<ol>
+    <li>Tela principal</li>
+    <ul>
+        <li>O usuário pode digitar a própria senha</li>
+        <li>O usuário pode optar por uma senha gerada pelo servidor</li>
+        <li>Ao ser gerada uma senha, ela é exibida e é dada a opção do usuário copiar a senha para salvá-la</li>
+    </ul>
+    <li>Tela de sucesso</li>
+    <ul>
+        <li>Exibe para o usuário que a sua senha é válida</li>
+    </ul>
+</ol>
 
 <div style="display: flex; align-items: center; ">
-    <img src="./git_assets/home_page_app.png" width="200"/>   
-    <img  src="./git_assets/success_page_app.png" style="margin-left: 25px;" width="200"/>   
+    <img src="./git_assets/home_page_app.png" width="200"/> 
+    <div style="margin-left: 25px;" ></div>  
+    <img  src="./git_assets/success_page_app.png" width="200"/>   
 </div>
+<br>
 
-This project is a starting point for a Flutter application.
+## Build da aplicação
 
-A few resources to get you started if this is your first Flutter project:
+Projeto desenvolvido em Flutter na versão **3.24.3** e Dart na versão **3.5.3**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Por motivos de segurança e privacidade a URL da API precisa ser configurada pelo arquivo **env.json**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+>*Não subir este arquivo para o repositório.*
 
-https://drive.google.com/uc?export=download&id=1-Q-6gzGVUvzzK0VCcyQUr8OejUw_4NUp
+### Configurando **env.json**
+   
+   A nivel de projeto, crie uma pasta "**./config**" e dentro da mesma crie um arquivo "**env.json**".
+
+   Para configurar a URL da Api copie a estrutura a abaixo e cole neste arquivo
+
+   ```json
+{
+    "BASE_URL": "https://link_da_api.com"
+}
+   ```
+
+   Após feito esse processo, não se esqueça de adicionar sempre no comando de build para ler este arquivo
+
+```shell
+flutter build apk --release --dart-define-from-file ./config/env.json
+```
+<hr>
+<br>
+<br>
+
+Para facilitar o debug e desenvolvimento do APP recomendo adicionar estes argumentos adicionais ao seu arquivo **launch.json** do VS Code.
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "launch_name_dev",
+            "request": "launch",
+            "type": "dart",
+            // Adicionar argumentos
+            "args": [
+                "--dart-define-from-file",
+                "./config/env.json"
+            ]
+        },
+        ...
+    ]
+}
+```
+
+<br>
+
+## Projeto
+
+### Informações adicionais sobre o projeto
+
+**Injeção de dependência:** GetIt <br>
+**Gerenciador de estado:** Signals <br>
+**Requisições HTTP**: Dio
