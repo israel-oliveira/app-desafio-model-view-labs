@@ -1,7 +1,8 @@
 import 'package:asyncstate/asyncstate.dart';
 import 'package:desafio_modelviewlabs/src/core/theme/app_theme.dart';
-import 'package:desafio_modelviewlabs/src/loader/app_loader.dart';
+import 'package:desafio_modelviewlabs/src/core/loader/app_loader.dart';
 import 'package:desafio_modelviewlabs/src/pages/home/home_page.dart';
+import 'package:desafio_modelviewlabs/src/pages/success/success_page.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -19,6 +20,9 @@ class App extends StatelessWidget {
           title: 'Flutter Demo',
           theme: AppTheme.ligthTheme,
           home: const HomePage(),
+          routes: {
+            "/success": (context) => const SuccessPage()
+          },
         );
       },
     );

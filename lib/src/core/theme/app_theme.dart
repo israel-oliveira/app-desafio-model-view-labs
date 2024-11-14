@@ -10,6 +10,9 @@ final class AppTheme {
       borderRadius: BorderRadius.circular(16),
       borderSide: const BorderSide(color: ligthOrangeColor));
 
+  static const titleStyle = TextStyle(
+      color: AppTheme.blueColor, fontSize: 20, fontWeight: FontWeight.bold);
+
   static final ligthTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: ligthOrangeColor),
     useMaterial3: true,
@@ -23,7 +26,7 @@ final class AppTheme {
         fontWeight: FontWeight.w700,
       ),
       floatingLabelStyle: const TextStyle(
-        fontSize: 14,
+        fontSize: 16,
         color: blueColor,
         fontWeight: FontWeight.w600,
       ),
@@ -44,6 +47,21 @@ final class AppTheme {
         ),
       ),
     ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: orangeColor,
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        textStyle: const TextStyle(
+          fontWeight: FontWeight.w700,
+          fontSize: 14,
+        ),
+      ),
+    ),
+    bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.white),
   );
+
+  // Impementar futuramente
+
   static final darkTheme = ligthTheme;
 }

@@ -64,7 +64,7 @@ mixin MessageStateMixin {
   }
 }
 
-mixin MessageViewMixix<T extends StatefulWidget> on State<T> {
+mixin MessageViewMixin<T extends StatefulWidget> on State<T> {
   void messageListener(MessageStateMixin state) {
     effect(() {
       switch (state) {
