@@ -92,7 +92,7 @@ Para facilitar o debug e desenvolvimento do APP recomendo adicionar estes argume
 }
 ```
 
-Pode utilizar a classe **Env** para acessar a base da API smepre que precisar.
+Pode utilizar a classe **Env** para acessar a base da API sempre que precisar.
 
 ```dart
 Env.baseUrl
