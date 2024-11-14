@@ -15,6 +15,7 @@ class HomeController with MessageStateMixin, CopyModalStateMixin {
   final ValidateRepository _validateRepository;
   final password = signal<String>('');
   final validMessage = signal<String>('');
+  final validErrorMessage = signal<String>('');
   final _obscurePassword = signal(true);
   final isValidPassword = signal(false);
 
@@ -53,7 +54,10 @@ class HomeController with MessageStateMixin, CopyModalStateMixin {
 
   Future<void> validatePassword(String password) async {
     password = password.trim();
-    if (password.isEmpty) return showInfo("Por favor, digite uma senha");
+    if (password.isEmpty) {
+      validErrorMessage.value = "Por favor, digite uma senha";
+      return showInfo("Por favor, digite uma senha");
+    }
 
     Either<ValidateException, String> validateResult =
         await _validateRepository.validatePassword(password);
@@ -63,6 +67,7 @@ class HomeController with MessageStateMixin, CopyModalStateMixin {
         final translator = GoogleTranslator();
         var ptMessage = await translator.translate(message, to: 'pt');
         showError(ptMessage.text);
+        validErrorMessage.value = ptMessage.text;
         break;
       case Left(value: ValidateError(:final message)):
         showError(message);
@@ -79,5 +84,4 @@ class HomeController with MessageStateMixin, CopyModalStateMixin {
 
   bool get obscurePassword => _obscurePassword();
   void passwordToggle() => _obscurePassword.value = !_obscurePassword.value;
-
 }

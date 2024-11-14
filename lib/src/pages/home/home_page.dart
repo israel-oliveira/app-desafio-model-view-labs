@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage>
     with MessageViewMixin, CopyModalViewMixin {
   HomeController controller = AppBinding.getIt<HomeController>();
   TextEditingController passwordEC = TextEditingController();
+  final passGKey = GlobalKey<FormFieldState>();
 
   @override
   void initState() {
@@ -27,6 +28,10 @@ class _HomePageState extends State<HomePage>
       if (controller.isValidPassword.value) {
         untracked(() => controller.isValidPassword.value = false);
         Navigator.of(context).pushNamed("/success");
+      }
+
+      if (controller.validErrorMessage.value.isNotEmpty) {
+        passGKey.currentState?.validate();
       }
     });
     super.initState();
@@ -66,8 +71,15 @@ class _HomePageState extends State<HomePage>
                     ),
                     Watch((_) {
                       return TextFormField(
+                        key: passGKey,
                         obscureText: controller.obscurePassword,
                         controller: passwordEC,
+                        validator: (value) {
+                          if (controller.validErrorMessage.value.isNotEmpty) {
+                            return controller.validErrorMessage.value;
+                          }
+                          return null;
+                        },
                         onChanged: (value) => {},
                         decoration: InputDecoration(
                           label: const Text('Nova senha'),
