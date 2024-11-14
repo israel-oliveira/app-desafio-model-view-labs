@@ -29,6 +29,7 @@ class HomeController with MessageStateMixin, CopyModalStateMixin {
         _validateRepository = validateRepository;
 
   Future<void> getRandomPassword() async {
+    validErrorMessage.value = '';
     Either<RandomException, String> randomResult =
         await _randomRepository.getRandomPassword();
 
@@ -70,9 +71,11 @@ class HomeController with MessageStateMixin, CopyModalStateMixin {
         validErrorMessage.value = ptMessage.text;
         break;
       case Left(value: ValidateError(:final message)):
+        validErrorMessage.value = '';
         showError(message);
         break;
       case Left(value: EntityValidate(:final message)):
+        validErrorMessage.value = '';
         showError(message);
         break;
       case Right(value: final message):

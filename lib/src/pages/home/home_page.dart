@@ -29,11 +29,13 @@ class _HomePageState extends State<HomePage>
         untracked(() => controller.isValidPassword.value = false);
         Navigator.of(context).pushNamed("/success");
       }
-
-      if (controller.validErrorMessage.value.isNotEmpty) {
-        passGKey.currentState?.validate();
-      }
     });
+
+    effect(() {
+      final _ = controller.validErrorMessage.value;
+      passGKey.currentState?.validate();
+    });
+
     super.initState();
   }
 
