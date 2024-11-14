@@ -8,7 +8,7 @@ Essa senha será validada, e, se estiver dentro dos padrões de segurança da em
 
 ## Instalação do projeto
 
-Disponibilizando o APK em relesa para testes
+Disponibilizando o APK em release para testes
 
 <h6> Download APK - Link direto Google Drive </h6>
 
